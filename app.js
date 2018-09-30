@@ -4,8 +4,6 @@ var routes = require('./routes/routes.js')
 
 var app = express();
 
-console.log('hrllo')
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded( { extended: true} ))
 

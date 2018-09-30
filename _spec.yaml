@@ -11,7 +11,10 @@
   откого:
   кому:
   кол-во
-  возвращает  true or false
+  возвращает  json {
+    status: true or false,
+    transactionID: integer
+  }
 
 проверка баланса:
   адрес

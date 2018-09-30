@@ -16,9 +16,9 @@
     transactionID: integer
   }
 
-проверка баланса:
+проверка баланса:   +endpoint, simple release
   адрес
-  возвращает целое число
+  возвращает целое число или false
   
 
 

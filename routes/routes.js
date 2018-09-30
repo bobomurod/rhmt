@@ -3,6 +3,8 @@ var minting = require('../models/minting.js');
 var sending = require('../models/sending.js');
 var balanceOf = require('../models/balanceOf.js')
 
+var testModel = require('../models/testModel')
+
 
 var appRouter = function(app) {
     app.get('/hello', function (req, res, next) {
@@ -33,6 +35,12 @@ var appRouter = function(app) {
         console.log(req.body)
         var resString = "hello " + req.body.string;
         res.status(200).json(resString)
+    })
+
+    app.post('/test', function(req, res, next) {
+        console.log("Responding...");
+        res.status(200).json(testModel(req.body.string))
+        console.log("Done.")
     })
 }
 

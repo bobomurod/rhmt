@@ -1,5 +1,5 @@
-var appTestModel = function() {
-    return "Hello " + req.body.string;
+var appTestModel = function(name) {
+    return "Hello " + name;
 }
 
 module.exports = appTestModel

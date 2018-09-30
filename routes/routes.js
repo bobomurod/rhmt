@@ -1,7 +1,8 @@
 var hello = require('../models/hello.js');
 var minting = require('../models/minting.js');
 var sending = require('../models/sending.js');
-var balanceOf = require('../models/balanceOf.js')
+var balanceOf = require('../models/balanceOf.js');
+var register = require('../models/register.js');
 
 var testModel = require('../models/testModel')
 
@@ -12,22 +13,28 @@ var appRouter = function(app) {
         res.status(200).json(hello())
         console.log("Done.");
     });
-    
-    app.get('/minting', function (req, res, next) {
+
+    app.post('/register', function(req, res, next) {
         console.log("Responding...");
-        res.status(200).json(minting());
+        res.status(200).json(register(req.body.quantity))
+        console.log("Done.");
+    })
+    
+    app.post('/minting', function (req, res, next) {
+        console.log("Responding...");
+        res.status(200).json(minting(req.body.address, req.body.quantity));
         console.log("Done.");
     });
 
-    app.get('/sending', function (req, res, next) {
+    app.post('/sending', function (req, res, next) {
         console.log("Responding...");
-        res.status(200).json(sending());
+        res.status(200).json(sending(req.body.from, req.body.to, req.body.quantity));
         console.log("Done.");
     })
 
-    app.get('/balanceOf', function (req, res, next) {
+    app.post('/balanceOf', function (req, res, next) {
         console.log("Responding...");
-        res.status(200).json(balanceOf());
+        res.status(200).json(balanceOf(req.body.address));
         console.log("Done.");
     })
 
@@ -39,7 +46,7 @@ var appRouter = function(app) {
 
     app.post('/test', function(req, res, next) {
         console.log("Responding...");
-        res.status(200).json(testModel(req.body.string))
+        res.status(200).json(testModel(name))
         console.log("Done.")
     })
 }

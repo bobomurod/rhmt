@@ -1,5 +1,5 @@
-var appMinting = function() {
-    return "Minting endpoint"
+var appMinting = function(address, quantity) {
+    return true
 }
 
 module.exports = appMinting

@@ -4,7 +4,8 @@ var sending = require('../models/sending.js');
 var balanceOf = require('../models/balanceOf.js');
 var register = require('../models/register.js');
 
-var testModel = require('../models/testings/testModel')
+var testModel = require('../models/testings/testModel');
+//var testMongo = require('../models/testings/testMongo');
 
 
 var appRouter = function(app) {

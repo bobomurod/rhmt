@@ -22,14 +22,14 @@ exports.holder_create = function (req, res) {
 };
 
 exports.holder_details = function (req, res) {
-    Product.findById(req.params.id, function(err, holder) {
+    Holder.findOne({wallet: req.params.wallet}, function(err, holder) {
         if (err) throw err;
         res.send(holder);
     })
 };
 
 exports.holder_update = function (req, res) {
-    Holder.findByIdAndUpdate(req.params.id, {$set: req.body},
+    Holder.findOneAndUpdate({wallet: req.params.wallet}, {$set: {balance: req.body.balance}},
         function (err, holder) {
             if (err) return next(err);
             res.send('holder updated.');
@@ -48,7 +48,7 @@ exports.holder_delete = function (req, res) {
 //         if (err) throw err;
 //         res.send(holders);
 //     })
-// }
+// } 
 
 exports.holder_all = function (req, res) {
     Holder.find({}, function(err, holders) {

@@ -1,0 +1,24 @@
+// holder create api request part
+{
+	"wallet":"0xABCVN47DH2356GHF78451212KJHFD",
+	"balance": 1000
+}
+
+// holder create api respond part
+[
+    {
+        "_id": "5bb2b342aeee8c23dd540c30",
+        "wallet": "0xABCVN47DH2356GHF78451212KJHFD",
+        "balance": 1000,
+        "__v": 0
+    },
+    {
+        "_id": "5bb2b425aeee8c23dd540c31",
+        "wallet": "0xDQHGERNBVYUY78567453465SRDTFGUY",
+        "balance": 1670,
+        "__v": 0
+    }
+]
+
+///////////////////////////////
+

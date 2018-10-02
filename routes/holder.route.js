@@ -7,9 +7,9 @@ const holder_controller = require('../controllers/holder.controller');
 
 router.get('/test', holder_controller.test);
 router.post('/create', holder_controller.holder_create);
-router.get('/:id', holder_controller.holder_details);
+router.get('/:wallet', holder_controller.holder_details);
 router.get('/', holder_controller.holder_all);
-router.put('/:id/update', holder_controller.holder_update);
+router.put('/:wallet/update', holder_controller.holder_update);
 router.delete('/:id/delete', holder_controller.holder_delete);
 
 module.exports = router;

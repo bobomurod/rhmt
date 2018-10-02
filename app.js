@@ -1,3 +1,7 @@
+//@ TODO
+// ИншаАллах переделаю все по примеру http://jasonwatmore.com/post/2018/06/14/nodejs-mongodb-simple-api-for-authentication-registration-and-user-management
+// нужно добавить middleware тпа хендлеров 
+
 var express = require('express')
 var bodyParser = require('body-parser')
 var routes = require('./routes/routes.js')

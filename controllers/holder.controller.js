@@ -24,6 +24,7 @@ exports.holder_create = function (req, res) {
 
 };
 
+// Детализация 
 exports.holder_details = function (req, res) {
     Holder.findOne({wallet: req.params.wallet}, function(err, holder) {
         if (err) throw err;
@@ -51,5 +52,12 @@ exports.holder_all = function (req, res) {
     Holder.find({}, function(err, holders) {
         if (err) throw err;
         res.send(holders);
+    })
+}
+
+exports.holder_balance = function (req, res) {
+    Holder.findOne({wallet: req.params.wallet},  function (err, holder) {
+        if (err) throw err;
+        res.send(holder)
     })
 }

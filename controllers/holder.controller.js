@@ -4,6 +4,9 @@ exports.test = function (req, res) {
     res.send('Greetings from the Test controller');
 };
 
+// @TODO
+//  Сделать невозможным создания двух аккаунтов с одним и тем же walletid
+// Переименовать wallet на walletID
 exports.holder_create = function (req, res) {
     let holder = new Holder(
         {
@@ -35,7 +38,7 @@ exports.holder_update = function (req, res) {
             res.send('holder updated.');
         });
 };
-
+ // @TODO переделать на арзивирование аккаунта
 exports.holder_delete = function (req, res) {
     Holder.findByIdAndRemove(req.params.id, function(err) {
         if (err) return next(err);
@@ -43,12 +46,6 @@ exports.holder_delete = function (req, res) {
     });
 };
 
-// exports.holder_all = function (req, res) {
-//     Product.find().toArray(function(err, holders) {
-//         if (err) throw err;
-//         res.send(holders);
-//     })
-// } 
 
 exports.holder_all = function (req, res) {
     Holder.find({}, function(err, holders) {

@@ -2,18 +2,20 @@
 // ИншаАллах переделаю все по примеру http://jasonwatmore.com/post/2018/06/14/nodejs-mongodb-simple-api-for-authentication-registration-and-user-management
 // нужно добавить middleware тпа хендлеров 
 
-var express = require('express')
-var bodyParser = require('body-parser')
+var express = require('express');
+var bodyParser = require('body-parser');
 var routes = require('./routes/routes.js')
-const holder = require('./routes/holder.route')
 const mongoose = require('mongoose');
+const holder = require('./routes/holder.route');
+const minting = require('./routes/minting.route');
 
 var app = express();
 
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded( { extended: false} ))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded( { extended: false} ));
 app.use('/holders', holder);
+app.use('/minting', minting);
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

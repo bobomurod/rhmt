@@ -39,7 +39,7 @@ exports.holder_update = function (req, res) {
             res.send('holder updated.');
         });
 };
- // @TODO переделать на арзивирование аккаунта
+ // @TODO переделать на архивирование аккаунта
 exports.holder_delete = function (req, res) {
     Holder.findByIdAndRemove(req.params.id, function(err) {
         if (err) return next(err);

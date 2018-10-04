@@ -154,9 +154,9 @@ contract Rahmat is StandardToken {
     uint8 public constant decimals = 0;
     uint256 public constant INITIAL_SUPPLY = 1000000 * (10 ** uint256(decimals));
 
-    function rahmat() {
+    function Rahmat() {
         totalSupply = INITIAL_SUPPLY;
         balances[msg.sender] = INITIAL_SUPPLY;
         RahmatHasDeployed(now);
     }
-}
+};

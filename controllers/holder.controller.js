@@ -58,6 +58,6 @@ exports.holder_all = function (req, res) {
 exports.holder_balance = function (req, res) {
     Holder.findOne({wallet: req.params.wallet},  function (err, holder) {
         if (err) throw err;
-        res.send(holder)
+        res.send("{"+holder.balance+"}")
     })
 }

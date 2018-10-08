@@ -8,6 +8,7 @@ var routes = require('./routes/routes.js')
 const mongoose = require('mongoose');
 const holder = require('./routes/holder.route');
 const minting = require('./routes/minting.route');
+const tx = require('./routes/transaction.route')
 
 var app = express();
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: false} ));
 app.use('/holders', holder);
 app.use('/minting', minting);
+app.use('/tx', tx);
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

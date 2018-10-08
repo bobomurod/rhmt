@@ -80,3 +80,4 @@ abi = [
 		"type": "event"
 	}
 ]
+

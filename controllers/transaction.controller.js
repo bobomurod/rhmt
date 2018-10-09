@@ -58,11 +58,10 @@ console.log(req.body)
                 });
     
     
-            return "Successfull";
+            res.send("Transfered");
         } else {
-            return "Somethin wrong";
+            res.send(  "Somethin wrong");
         }
-        return holder.balance;
     });
 
     }

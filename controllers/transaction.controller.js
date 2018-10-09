@@ -35,26 +35,39 @@ exports.setcap = function (req, res) {
 // С проверкой переполнения буфера и минусовых балансов
 
 exports.transfer = function (req, res) {
-
-var fromBalance = Holder.findOne({wallet: req.body.wallet}, function (err, holder) {
+console.log(req.body)
+    var fromBalance = Holder.findOne({wallet: req.body.from}, function (err, fromHolder) {
         if (err) throw err;
-        return holder.balance;
-    });
-
-res.send (transfer(req.body.to, req.body.from, req.body.value))
-
-    function transfer (_to, _from, _value) {
-        if (_fromBalance => _value) {
-            _fromBalance = _fromBalance - _value;
+        console.log("holder.balance is " + fromHolder.balance);
+        if (fromHolder.balance >= req.body.value) {
+    
+            fromBalance = fromHolder.balance - req.body.value;
+    
+            Holder.findOneAndUpdate({wallet: req.body.from}, {$set: {balance: fromBalance}}, function (err, holder) {
+                if (err) throw err;
+            });
             
-            _toBalance = _toBalance + _value;
-
+             Holder.findOne({wallet: req.body.to}, function(err, holder){
+                            if (err) throw err;
+                            _toBalance = holder.balance + req.body.value;
+                    
+                            Holder.findOneAndUpdate({wallet: req.body.to}, {$set: {balance: _toBalance}}, function(err, holder) {
+                                if (err) throw err;
+                            });
+                            //return holder.balance;
+                });
+    
+    
             return "Successfull";
         } else {
             return "Somethin wrong";
         }
+        return holder.balance;
+    });
+
     }
-}
+
+
 
 
 //Надо встроить

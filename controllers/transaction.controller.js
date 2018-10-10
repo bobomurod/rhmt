@@ -57,7 +57,6 @@ console.log(req.body)
                             //return holder.balance;
                 });
     
-    
             res.send("Transfered");
         } else {
             res.send(  "Somethin wrong");
@@ -65,7 +64,8 @@ console.log(req.body)
     });
 
     }
-
+// Отрефактрить то что сверху 
+// Как можно скорее
 
 
 

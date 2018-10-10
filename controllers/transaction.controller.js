@@ -50,13 +50,13 @@ console.log(req.body)
             });
             
             Holder.findOne({wallet: req.body.to}, function(err, holder){
+                        if (err) throw err;
+                        _toBalance = holder.balance + req.body.value;
+                
+                        Holder.findOneAndUpdate({wallet: req.body.to}, {$set: {balance: _toBalance}}, function(err, holder) {
                             if (err) throw err;
-                            _toBalance = holder.balance + req.body.value;
-                    
-                            Holder.findOneAndUpdate({wallet: req.body.to}, {$set: {balance: _toBalance}}, function(err, holder) {
-                                if (err) throw err;
-                            });
-                            //return holder.balance;
+                        });
+                        //return holder.balance;
                 });
             
             let tx = new Tx(

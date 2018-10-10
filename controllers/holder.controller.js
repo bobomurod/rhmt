@@ -47,7 +47,6 @@ exports.holder_delete = function (req, res) {
     });
 };
 
-
 exports.holder_all = function (req, res) {
     Holder.find({}, function(err, holders) {
         if (err) throw err;

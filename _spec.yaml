@@ -14,7 +14,7 @@
   принимает: кол-во рахматов
   возвращает:  json {
     status: true or false,
-    transactionID: integer
+    transactionID: String
   }
 
 проверка баланса:    +endpoint, +simple release, +demo release
@@ -31,5 +31,5 @@
 
 
 вообще в начале нужно запускать инициализатор {
-    объем эмиссии с неизменяемой велечиной
+    объем эмиссии с неизменяемой величиной
     }

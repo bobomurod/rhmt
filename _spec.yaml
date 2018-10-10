@@ -1,16 +1,17 @@
-1регистрация аккаунтов: +endpoint, +simple release, demo release
-  принимает: кол-во          //количество адресов которые нужны
+
+регистрация аккаунтов: +endpoint, +simple release, demo release
+  принимает: кол-во адресов         //количество адресов которые нужны
   возвращает: массив из адресов
 
 эмиссия:    +endpoint, +simple release, demo release
   принимает: аккаунт
-  принимает: кол-во
+  принимает: кол-во рахматов
   возвращает:  true or false
 
-транзакция:    +endpoint, +simple release, demo release
+транзакция:    +endpoint, +simple release, +demo release
   принимает: откого
   принимает: кому
-  принимает: кол-во
+  принимает: кол-во рахматов
   возвращает:  json {
     status: true or false,
     transactionID: integer

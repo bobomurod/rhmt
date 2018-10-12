@@ -4,11 +4,11 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
-var routes = require('./routes/routes.js')
+var routes = require('./routes/routes.js');
 const mongoose = require('mongoose');
 const holder = require('./routes/holder.route');
 const minting = require('./routes/minting.route');
-const tx = require('./routes/transaction.route')
+const tx = require('./routes/transaction.route');
 
 var app = express();
 
@@ -41,4 +41,3 @@ let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 /////////////////////////   MONGO DB CONN ENDING    /////////////////
-

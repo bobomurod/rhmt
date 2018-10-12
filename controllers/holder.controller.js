@@ -1,6 +1,11 @@
 const Holder = require('../models/holder.model');
+const pushit = require('./pusher.controller');
 
 exports.test = function (req, res) {
+    pushit("message", {
+        message1: "message1",
+        message2: "message2"
+    });
     res.send('Greetings from the Test controller');
 };
 

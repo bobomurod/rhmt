@@ -19,9 +19,9 @@
       forceTLS: true
     });
 
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      alert(JSON.stringify(data.message.message2));
+    var channel = pusher.subscribe('mychannel');
+    channel.bind('myevent', function(data) {
+      alert(JSON.stringify(data.message));
     });
   </script>
 </head>

@@ -1,7 +1,13 @@
 pragma solidity ^ 0.4.21;
 
 contract Store{
-    function Store() public returns (string) {
-        return "hello";
+    mapping(string => string) archive;
+    function store(string day, string txs) public returns (string) {
+        archive[day] = txs;
+        return archive[day];
+    }
+    function read(string day) public view returns (string) {
+        return archive[day];
     }
 }
+

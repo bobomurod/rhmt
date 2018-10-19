@@ -7,7 +7,7 @@ module.exports = function(message, contest){
         cluster: 'eu',
         encrypted: true
     })
-    pusher.trigger('my-channel', 'my-event', {
+    pusher.trigger('mychannel', 'myevent', {
         message : contest
     });
 }

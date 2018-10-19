@@ -1,6 +1,7 @@
 const Holder = require('../models/holder.model');
 const Bank = require('../models/bank.model');
 const Tx = require('../models/tx.model');
+const pushit = require('./pusher.controller');
 
 exports.test = function (req, res) {
     res.send('Transaction test');
@@ -72,7 +73,11 @@ console.log(req.body)
             tx.save(function(err, result) {
                 if (err) {
                     res.send(err)
-                    ;} res.send(result._id)
+                    ;}
+                    pushit("message", {
+                        "message": "update"
+                    }) 
+                    res.send(result._id)
             })
             //res.send("Transfered");
         } else {
@@ -84,7 +89,6 @@ console.log(req.body)
 
 // Отрефактрить то что сверху 
 // Как можно скорее
-
 
 
 //Надо встроить

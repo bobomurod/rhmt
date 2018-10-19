@@ -22,6 +22,7 @@
     var channel = pusher.subscribe('mychannel');
     channel.bind('myevent', function(data) {
       alert(JSON.stringify(data.message));
+      console.log(data.message)
     });
   </script>
 </head>

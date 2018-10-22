@@ -73,8 +73,10 @@ const txdata = {
     from: '0x260c29d0c228603b35b608cfa68f1476a1c763ca',
     to: '0xD21Cc283989437ec39309802cb24C09A9249F412',
     value: web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),
-    gasLimit: web3.utils.toHex(web3.utils.toWei('0.000074511', 'ether')),
-    gasPrice: web3.utils.toHex(web3.utils.toWei('0.00000001', 'ether'))
+    gasLimit: web3.utils.toHex(210000),
+    gasPrice: web3.utils.toHex(web3.utils.toWei('0.00000002', 'ether'))
+    // gasLimit: web3.utils.toHex(web3.utils.toWei('0.000074511', 'ether')),
+    // gasPrice: web3.utils.toHex(web3.utils.toWei('0.00000001', 'ether'))
 }
 
 async function makeTransaction(to, value, data, gasLimit, gasPrice) {
@@ -99,6 +101,7 @@ async function makeTransaction(to, value, data, gasLimit, gasPrice) {
     })
 }
 
-makeTransaction(txdata.to, txdata.value,'0x00', txdata.gasLimit, txdata.gasPrice)
+makeTransaction(txdata.to, txdata.value,'0x00', txdata.gasLimit, txdata.gasPrice).then(res=> {
+    console.log("Signed tx broadcasted, get tx hash below\n" + res)})
 
 

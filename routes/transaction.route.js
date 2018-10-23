@@ -9,5 +9,4 @@ router.post('/transfer', transaction_controller.transfer);
 router.post('/create', transaction_controller.create);
 router.post('/setcap', transaction_controller.setcap);
 
-
 module.exports = router;

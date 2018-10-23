@@ -4,6 +4,7 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var routes = require('./routes/routes.js');
 const mongoose = require('mongoose');
 const holder = require('./routes/holder.route');

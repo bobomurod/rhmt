@@ -2,7 +2,9 @@ const Holder = require('../models/holder.model');
 const pushit = require('./pusher.controller');
 
 exports.test = function (req, res) {
-    res.send('Greetings from the Test controller');
+    res.send({
+        text: "Greatings from test"
+    });
 };
 
 exports.pushertest = function (req, res) {

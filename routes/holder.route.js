@@ -6,6 +6,7 @@ const holder_controller = require('../controllers/holder.controller');
 // a simple test url to check that all our files are communicating correctlry.
 
 router.get('/test', holder_controller.test);
+router.get('/pushertest', holder_controller.pushertest);
 router.post('/create', holder_controller.holder_create);
 router.get('/:wallet', holder_controller.holder_details);
 router.get('/', holder_controller.holder_all);

@@ -74,9 +74,9 @@ console.log(req.body)
                 if (err) {
                     res.send(err)
                     ;}
-                    pushit("message", {
-                        "message": "update"
-                    }) 
+                    // pushit("message", {
+                    //     "message": "update"
+                    // }) 
                     res.send(result._id)
             })
             //res.send("Transfered");

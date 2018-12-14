@@ -1,16 +1,16 @@
-проверка баланса
+проверка баланса пользователя
 get /holders/address/balance
 
+<!-- проверка уровня пользователя
+get /holders/address/balance -->
 
-полная информация о держателе
+полная информация о ползователе   //еще не полная (уточнить)
 get /holders/address
 
-
-список всех держателей
+список всех пользователей и их накопленных поинтов top rahmat 
 get /holders
 
-
-транзакция
+транзакция (остается под вопросом)
 post /tx/transfer
 json {
     from: address,
@@ -18,10 +18,10 @@ json {
     value: integer
 }
 
-
-производства токенов
+начесление рахматов  (RAW начсление)
 post /minting/mint
 json {
     wallet: address,
     value: integer
 }
+

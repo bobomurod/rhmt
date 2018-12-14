@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"testdb.mda"},{"v":2,"unique":true,"key":{"abc":1.0},"name":"abc_1","ns":"testdb.mda"}],"uuid":"9f5770fd8aba4b3e9f92b2040852e819"}

@@ -19,7 +19,7 @@ exports.minting_mint = function(req, res) {
     }
     Holder.findOneAndUpdate(
       { wallet: req.body.wallet },
-      { $set: { balance: holder.balance + req.body.value } },
+      { $set: { balance: holder.balance + req.body.balance } },
       function(err, result) {
         if (err) {
           res.send(err);
@@ -31,6 +31,24 @@ exports.minting_mint = function(req, res) {
 };
 
 exports.minting_easy = function(req, res) {
+  Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
+    if (err) {
+      res.send(err);
+    }
+    Holder.findOneAndUpdate(
+      { wallet: req.body.wallet },
+      { $set: { balance: holder.balance + req.body.value } },
+      function(err, result) {
+        if (err) {
+          res.send(err);
+        }
+        res.send(result);
+      }
+    );
+  });
+};
+
+exports.minting_fund = function(req, res) {
   Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
     if (err) {
       res.send(err);

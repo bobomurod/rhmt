@@ -37,7 +37,7 @@ var server = app.listen(9994, function() {
 
 ///////////////////////////    MONGO DB CONNECTING    /////////////////
 
-let dev_db_url = "mongodb://localhost:27017/testdb";
+let dev_db_url = "mongodb://localhost:27017/testdb1";
 let mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(
   mongoDB,

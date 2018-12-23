@@ -37,7 +37,7 @@ exports.minting_easy = function(req, res) {
     }
     Holder.findOneAndUpdate(
       { wallet: req.body.wallet },
-      { $set: { balance: holder.balance + req.body.value } },
+      { $set: { balance: holder.balance + (((req.body.value)/100)*1) } },
       function(err, result) {
         if (err) {
           res.send(err);

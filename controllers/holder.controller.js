@@ -17,17 +17,8 @@ exports.pushertest = function (req, res) {
 // @TODO
 //  Сделать невозможным создания двух аккаунтов с одним и тем же walletid
 // Переименовать wallet на walletID
-exports.holder_create = function (req, res) {
+exports.holder_create = function (req, res, next) {
 
-    if(Holder.findOne({ wallet: req.body.wallet })) 
-            {
-
-                console.log(!Holder.findOne({wallet: req.body.wallet}))
-                res.send("error in creating wallet/holder ")
-    }
-    else {
-        
-        console.log("tetet")
     let holder = new Holder(
             {
                 wallet: req.body.wallet,
@@ -38,6 +29,7 @@ exports.holder_create = function (req, res) {
         holder.save(function (err) {
 
             if (err) {
+                res.send("wallet creating error, maybe wallet exists.")
                 return next(err);
             }
             res.send('Holder Created successfully')
@@ -45,7 +37,6 @@ exports.holder_create = function (req, res) {
         })
 
     }
-}    
 
 // Детализация 
 exports.holder_details = function (req, res) {

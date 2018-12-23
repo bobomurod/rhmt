@@ -25,3 +25,12 @@ json {
     value: integer
 }
 
+начесление рахматов (простое начисление поинтов, 1 процент от транзакции)
+post /minting/easy
+json {
+    wallet: "номер телефона"
+    tx_value: "сумма транзакции"
+}
+
+    Альтернативный способ /minting/wallet/tx_value
+

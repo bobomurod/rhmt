@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
 // has registered datetime
 // has previus balance
 let HolderShema = new Schema({
-    wallet: {type: String, required: true, max: 100},
+    wallet: {type: String, unique: true, required: true, max: 100},
     balance: {type: Number, required: true},
 })
 

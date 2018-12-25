@@ -10,6 +10,7 @@ const mongoose = require("mongoose");
 const holder = require("./routes/holder.route");
 const minting = require("./routes/minting.route");
 const tx = require("./routes/transaction.route");
+const levels = require("./routes/levels.route")
 
 var app = express();
 

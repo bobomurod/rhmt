@@ -22,7 +22,8 @@ exports.holder_create = function (req, res, next) {
     let holder = new Holder(
             {
                 wallet: req.body.wallet,
-                balance: req.body.balance
+                balance: req.body.balance,
+                level: 0
             }
         )
     

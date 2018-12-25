@@ -10,7 +10,8 @@ const Schema = mongoose.Schema;
 let HolderShema = new Schema({
     wallet: {type: String, unique: true, required: true, max: 100},
     balance: {type: Number, required: true},
-    level: {type: Number}
+    level: {type: Number},
+    used: {type: Number}
 })
 
 //Export the model

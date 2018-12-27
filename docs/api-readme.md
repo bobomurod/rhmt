@@ -59,3 +59,9 @@ get /holders/address/balance -->
             wallet: address,
             value: integer
         }
+
+8. прорверка уровня пользователя
+
+9. конвертация рахматов в уровни
+
+10. 

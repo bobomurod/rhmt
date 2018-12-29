@@ -1,0 +1,13 @@
+{
+    "tx_id": integer,
+    "tx_nonce": integer,
+    "tx_kind": string,
+    "tx_owner": 
+    "tx_value": "float",
+    "points_generated": "float",
+    "points_balance_before": "float",
+    "points_balance_after": "float",
+    "init_date" : new Date(),
+    "init timestamp": new Timestamp(),
+    ""
+}

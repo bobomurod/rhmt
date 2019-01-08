@@ -62,6 +62,15 @@ get /holders/address/balance -->
 
 8. прорверка уровня пользователя
 
+        post /levels/getLevel
+        json {
+                wallet: address
+        }
+
 9. конвертация рахматов в уровни
 
+        post /levels/levelUp
+        json {
+                wallet: address
+        }
 10.  

@@ -11,7 +11,11 @@ let HolderShema = new Schema({
     wallet: {type: String, unique: true, required: true, max: 100},
     balance: {type: Number, required: true},
     level: {type: Number},
-    used: {type: Number}
+    used: {type: Number},
+    kycid: {type: String},
+    last_mint_timestamp: {type: Number},
+    reg_date: {type: String},
+    reg_timestamp: {type: Number}
 })
 
 //Export the model

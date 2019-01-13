@@ -30,9 +30,21 @@ exports.minting_mint = function(req, res) {
   });
 };
 
+
 exports.minting_easy = function(req, res) {
   Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
     if (err) {
+      let holder = new Holder(
+        {
+            wallet: req.body.wallet,
+            balance: req.body.balance,
+            reg_date: new Date(),
+            reg_timestamp: new Timestamp(),
+            used: 0,
+            level: 0
+            
+        }
+      )
       res.send(err);
     }
     Holder.findOneAndUpdate(
@@ -47,6 +59,7 @@ exports.minting_easy = function(req, res) {
     );
   });
 };
+
 
 exports.minting_fund = function(req, res) {
   Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {

@@ -74,5 +74,4 @@ get /holders/address/balance -->
                 wallet: address
         }
 
-
 10.  

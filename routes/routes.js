@@ -1,5 +1,5 @@
 var hello = require('../models/hello.js');
-var minting = require('../models/minting.js');
+var minting = require('../models/minting.model');
 var sending = require('../models/sending.js');
 var balanceOf = require('../models/balanceOf.js');
 var register = require('../models/register.js');

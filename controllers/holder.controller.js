@@ -24,7 +24,7 @@ exports.holder_create = function (req, res, next) {
                 wallet: req.body.wallet,
                 balance: req.body.balance,
                 level: 0,
-                used: 0
+                used: 0 
             }
         )
     

@@ -12,7 +12,7 @@ let HolderShema = new Schema({
     balance: {type: Number, required: true},
     level: {type: Number},
     used: {type: Number},
-    kycid: {type: String, unique: true},                  //KYC id это умид ака сказал что в будущем номера телефоно могут относится к одному айди(несколько счетов у одного пользователя)
+    kycid: {type: String, unique: true},                  //KYC id это мид ака сказал что в будущем номера телефоно могут относится к одному айди(несколько счетов у одного пользователя)
     last_mint_timestamp: {type: Number},
     reg_date: {type: String},
     reg_timestamp: {type: Number},

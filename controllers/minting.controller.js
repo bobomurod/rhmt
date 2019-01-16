@@ -33,8 +33,7 @@ exports.minting_mint = function(req, res) {
 
 exports.minting_easy = function(req, res) {
   Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
-    if (err) {
-      
+    if (err) { 
       res.send(err);
     }
     Holder.findOneAndUpdate(
@@ -50,7 +49,6 @@ exports.minting_easy = function(req, res) {
                 reg_timestamp: Date.now(),
                 used: 0,
                 level: 0
-                
             }
           );
           holder.save(function (err) {
@@ -62,9 +60,9 @@ exports.minting_easy = function(req, res) {
             console.log('Holder Created successfully')
          
         });
-          res.send("created");
+          res.send("true");
         }
-        res.send(result);
+        //res.send("result");
       }
     );
   });

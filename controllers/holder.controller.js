@@ -23,6 +23,9 @@ exports.holder_create = function (req, res, next) {
             {
                 wallet: req.body.wallet,
                 balance: req.body.balance,
+                reg_date: new Date(),
+                reg_timestamp: Date.now(),
+                kycid: req.body.kycid,
                 level: 0,
                 used: 0 
             }

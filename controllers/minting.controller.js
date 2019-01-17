@@ -30,44 +30,28 @@ exports.minting_mint = function(req, res) {
   });
 };
 
+exports.minting_easy = function(req, res, next) {
 
-exports.minting_easy = function(req, res) {
-  Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
-    if (err) { 
-      res.send(err);
+Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
+  if (err) {
+    res.send(err);
+  }
+  Holder.findOneAndUpdate({wallet: req.body.wallet}, {$inc: {balance: (((req.body.value)/100)*1)}},
+    function (err, holder) {
+      if (err) return next(err);
+      res.send('true');
+    });
+  })
+}
+
+exports.minting_test_find = function (req, res) {
+  Holder.find({wallet: req.body.wallet}, (err, result) => {
+    if (err) { console.log("error")} else {
+      console.log(result.balance)
+      
     }
-    Holder.findOneAndUpdate(
-      { wallet: req.body.wallet },
-      { $set: { balance: Holder.balance + (((req.body.value)/100)*1) } },
-      function(err, result) {
-        if (err) {
-          let holder = new Holder(
-            {
-                wallet: req.body.wallet,
-                balance: (((req.body.value)/100)*1),
-                reg_date: new Date(),
-                reg_timestamp: Date.now(),
-                used: 0,
-                level: 0
-            }
-          );
-          holder.save(function (err) {
-
-            if (err) {
-                res.send("wallet creating error, maybe wallet exists.")
-                return next(err);
-            }
-            console.log('Holder Created successfully')
-         
-        });
-          res.send("true");
-        }
-        //res.send("result");
-      }
-    );
-  });
-};
-
+  })
+}
 
 exports.minting_fund = function(req, res) {
   Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {

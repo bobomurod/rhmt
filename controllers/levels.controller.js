@@ -36,7 +36,7 @@ exports.levelUp = function(req, res) {
                 })
             } 
             else {
-                res.send("Wallet balance is less than 10000, claim " +   (10000-result.balance) +  " and try again. Good luck!" )
+                res.send("Wallet balance is less than 10000, claim " +  (10000-result.balance) +  " and try again. Good luck!" )
             }
     })
 }

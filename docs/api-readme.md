@@ -9,7 +9,7 @@ Readme к API Rahmat v0.2
         post /holders/create
         json {
             "wallet": MSISDN,
-            "balance": integer ("0" if nothing)
+            "balance": integer ("0" if nothing)       //Float потому что операции могут быьб
             "kycid": string
         }
 
@@ -36,8 +36,8 @@ get /holders/address/balance -->
 
         post /tx/transfer
         json {
-            from: wallet_id,
-            to: wallet_id,
+            from: MSISDN,
+            to: MSISDN,
             value: integer
         }
 
@@ -46,7 +46,7 @@ get /holders/address/balance -->
 
         post /minting/easy
         json {
-            wallet: "номер телефона"
+            wallet: MSISDN
             tx_value: "сумма транзакции"
         }
 
@@ -57,7 +57,7 @@ get /holders/address/balance -->
 
         post /minting/mint
         json {
-            wallet: address,
+            wallet: MSISDN,
             value: integer
         }
 
@@ -65,14 +65,17 @@ get /holders/address/balance -->
 
         post /levels/getLevel
         json {
-                wallet: address
+                wallet: MSISDN
         }
+
+        еще один способ
+        get /levels/getLevel/$MSISDN
 
 9. конвертация рахматов в уровни
 
         post /levels/levelUp
         json {
-                wallet: address
+                wallet: MSISDN
         }
 
 10.  

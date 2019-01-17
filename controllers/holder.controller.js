@@ -77,7 +77,12 @@ exports.holder_balance = function (req, res, next) {
     Holder.findOne({wallet: req.params.wallet},  function (err, holder) {
         if (err) {
             res.send("some error")
-            next (err);}
-        res.send("{"+holder.balance+"}")
+            next(err)} else {
+                if (holder == null) {
+                    res.send("maybe holder does not exist")
+                } else {
+                    res.send("{"+holder.balance+"}")
+                }
+            }
     })
 }

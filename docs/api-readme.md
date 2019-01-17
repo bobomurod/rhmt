@@ -8,8 +8,9 @@ Readme к API Rahmat v0.2
         альтернативный способ:
         post /holders/create
         json {
-            "wallet": $wallet_id,
-            "balance": integer
+            "wallet": MSISDN,
+            "balance": integer ("0" if nothing)
+            "kycid": string
         }
 
 

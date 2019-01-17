@@ -8,7 +8,7 @@ Readme к API Rahmat v0.2
         альтернативный способ:
         post /holders/create
         json {
-            "wallet": MSISDN,
+            "wallet": MSISDN,      //принимается String
             "balance": integer ("0" if nothing)       //Float потому что операции могут быьб
             "kycid": string
         }
@@ -16,7 +16,7 @@ Readme к API Rahmat v0.2
 
 2. проверка баланса пользователя
 
-        get /holders/$wallet_id/balancee
+        get /holders/$wallet_id/balance
 
 <!-- проверка уровня пользователя
 get /holders/address/balance -->

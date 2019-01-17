@@ -19,6 +19,8 @@ exports.pushertest = function (req, res) {
 // Переименовать wallet на walletID
 exports.holder_create = function (req, res, next) {
 
+//console.log(Holder.find({wallet: req.body.wallet}).count() )
+
     let holder = new Holder(
             {
                 wallet: req.body.wallet,
@@ -31,13 +33,13 @@ exports.holder_create = function (req, res, next) {
             }
         )
     
-        holder.save(function (err) {
-
+        holder.save(function (err, docs) {
             if (err) {
-                res.send("wallet creating error, maybe wallet exists.")
+                res.send("wallet creating error, maybe wallet exists or you sending wrong type of data.")
                 return next(err);
-            }
+            } else { 
             res.send('Holder Created successfully')
+            }
          
         })
 

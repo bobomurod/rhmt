@@ -12,6 +12,7 @@ let MintingSchema = new Schema({
   minting_id: {type: String, required: true},
   wallet: {type: Number, required: true},
   value: {type: Number, required: true},
+  kind: {type: Number, required: true},
   kycid: {type: String, required: false},
   op_date: {type: Date, required: true},
   op_timestamp: {type: Number, required: true},

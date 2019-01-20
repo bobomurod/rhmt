@@ -2,6 +2,8 @@ const Holder = require("../models/holder.model");
 const Mint = require("../models/minting.model");
 const uuidv4 = require("uuid/v4");
 
+var additional;  //это поинты , просчитанные поинты хранятся вот здесь
+
 exports.minting_test = function(req, res) {
   res.send("Minting test");
 };
@@ -38,11 +40,30 @@ exports.minting_mint = function(req, res) {
 
 exports.minting_easy = function(req, res, next) {
 
+switch (req.body.kind) {
+  case 0:
+     additional = ( ( ( req.body.value ) /100 ) *1 );
+    break;
+  case 2:
+     additional = ( ( ( req.body.value ) /100 ) *2 );
+    break;
+  case 4:
+     additional = ( ( ( req.body.value ) /100 ) *4 );
+    break;
+  case 5:
+     additional = ( ( ( req.body.value ) /100 ) *5 );
+    break;
+  default:
+    res.send("Unrecognized transaction kind")
+    break;
+}
+
 Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
   if (err) {
     res.send(err);
   }
-  Holder.findOneAndUpdate({wallet: req.body.wallet}, {$inc: {balance: (((req.body.value)/100)*1)}},
+  //Holder.findOneAndUpdate({wallet: req.body.wallet}, {$inc: {balance: (((req.body.value)/100)*req.body.kind)}},
+  Holder.findOneAndUpdate({wallet: req.body.wallet}, {$inc: {balance: additional }},
     function (err, holder) {
       if (err) return next(err);
 
@@ -52,10 +73,11 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
           minting_id: uuidv4(),
           wallet: req.body.wallet,
           value: req.body.value,
+          kind: req.body.kind,
           kycid: req.body.kycid,
           op_date: new Date(),
           op_timestamp: Date.now(),
-          op_id: uuidv4()
+          op_id: uuidv4(),
         }
       )
       

@@ -9,7 +9,7 @@ Readme к API Rahmat v0.2
         post /holders/create
         json {
             "wallet": MSISDN,      //принимается String
-            "balance": integer ("0" if nothing)       //Float потому что операции могут быьб
+            "balance": integer ("0" if nothing)       //Принимается в тийнах
             "kycid": string
         }
 

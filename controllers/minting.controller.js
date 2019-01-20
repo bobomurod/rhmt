@@ -48,12 +48,13 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
 
       let mint = new Mint(
         {
-          initator_id: "0",
+        initator_id: "0",
           minting_id: uuidv4(),
           wallet: req.body.wallet,
           value: req.body.value,
+          kycid: req.body.kycid,
           op_date: new Date(),
-          timestamp: Date.now(),
+          op_timestamp: Date.now(),
           op_id: uuidv4()
         }
       )

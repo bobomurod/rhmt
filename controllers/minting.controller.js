@@ -1,4 +1,6 @@
 const Holder = require("../models/holder.model");
+const Mint = require("../models/minting.model");
+const uuidv4 = require("uuid/v4");
 
 exports.minting_test = function(req, res) {
   res.send("Minting test");
@@ -30,6 +32,10 @@ exports.minting_mint = function(req, res) {
   });
 };
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
 exports.minting_easy = function(req, res, next) {
 
 Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
@@ -39,10 +45,57 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
   Holder.findOneAndUpdate({wallet: req.body.wallet}, {$inc: {balance: (((req.body.value)/100)*1)}},
     function (err, holder) {
       if (err) return next(err);
+
+      let mint = new Mint(
+        {
+          initator_id: "0",
+          minting_id: uuidv4(),
+          wallet: req.body.wallet,
+          value: req.body.value,
+          op_date: new Date(),
+          timestamp: Date.now(),
+          op_id: uuidv4()
+        }
+      )
+      
+      mint.save(function(err, docs) {
+        if (err) {
+          console.error("Saving MINT model error");
+          return next(err);
+        } else {
+          console.log("mint saved succesful")
+        }
+      })
+
+    //   holder.save(function (err, docs) {
+    //     if (err) {
+    //         res.send("wallet creating error, maybe wallet exists or you sending wrong type of data.")
+    //         return next(err);
+    //     } else { 
+    //     res.send('Holder Created successfully')
+    //     }
+     
+    // })
+
+    //   let holder = new Holder(
+    //     {
+    //         wallet: req.body.wallet,
+    //         balance: req.body.balance,
+    //         reg_date: new Date(),
+    //         reg_timestamp: Date.now(),
+    //         kycid: req.body.kycid,
+    //         level: 0,
+    //         used: 0 
+    //     }
+    // )
+
       res.send('true');
     });
   })
 }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 exports.minting_test_find = function (req, res) {
   Holder.find({wallet: req.body.wallet}, (err, result) => {

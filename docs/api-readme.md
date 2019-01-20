@@ -47,7 +47,8 @@ get /holders/address/balance -->
         post /minting/easy
         json {
             wallet: MSISDN
-            tx_value: "сумма транзакции"
+            value: "сумма транзакции"
+            kind: integer   //0-простая транзакция , 2-транза с 2процента зачесления, 4-транза с 4процента зачесления в поинтах и тоже самое с 5
         }
 
         Альтернативный способ /minting/wallet/tx_value

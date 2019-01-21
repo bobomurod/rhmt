@@ -17,6 +17,9 @@ let MintingSchema = new Schema({
   op_date: {type: Date, required: true},
   op_timestamp: {type: Number, required: true},
   op_id: {type: String, unique: true, required: true},
+  minted: {type: Number, required: true},
+  balance_before: {type: Number, required: true},
+  balance_after: {type: Number, required: true},
 })
 
 module.exports = mongoose.model('Mint', MintingSchema)

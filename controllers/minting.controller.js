@@ -55,6 +55,7 @@ switch (req.body.kind) {
     break;
   default:
     res.send("Unrecognized transaction kind")
+    return next("Unrecognized transaction kind")
     break;
 }
 
@@ -62,6 +63,7 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
   if (err) {
     res.send(err);
   }
+  var balance_before = holder.balance;
   //Holder.findOneAndUpdate({wallet: req.body.wallet}, {$inc: {balance: (((req.body.value)/100)*req.body.kind)}},
   Holder.findOneAndUpdate({wallet: req.body.wallet}, {$inc: {balance: additional }},
     function (err, holder) {
@@ -78,6 +80,9 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
           op_date: new Date(),
           op_timestamp: Date.now(),
           op_id: uuidv4(),
+          minted: additional,
+          balance_before: balance_before,
+          balance_after: holder.balance + additional,
         }
       )
       

@@ -9,7 +9,7 @@ Readme к API Rahmat v0.2
         post /holders/create
         json {
             "wallet": MSISDN,      //принимается String
-            "balance": integer ("0" if nothing)       //Принимается в тийнах
+            "balance": integer ("0" if nothing)       
             "kycid": string
         }
 
@@ -47,7 +47,7 @@ get /holders/address/balance -->
         post /minting/easy
         json {
             wallet: MSISDN
-            value: "сумма транзакции"
+            value: "сумма транзакции"          //Принимается в тийнах
             kind: integer   //0-простая транзакция , 2-транза с 2процента зачесления, 4-транза с 4процента зачесления в поинтах и тоже самое с 5
         }
 

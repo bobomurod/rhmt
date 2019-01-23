@@ -63,7 +63,7 @@ Readme к API Rahmat v0.2
         }
 
         еще один способ
-        get /levels/getLevel/$MSISDN
+        get /levels/getLevel/$MSISDN      //скоро заработает
 
 9. конвертация рахматов в уровни
 

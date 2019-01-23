@@ -8,7 +8,7 @@ exports.minting_test = function(req, res) {
   res.send("Minting test");
 };
 
-exports.minting_mint = function(req, res) {
+exports.minting_easy = function(req, res) {
   // Holder.findOneAndUpdate({wallet: req.body.wallet}, {$set: {$balance: balance + req.body.value}},
   //     function(err, holder){
   //         if(err) {
@@ -38,7 +38,7 @@ exports.minting_mint = function(req, res) {
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
-exports.minting_easy = function(req, res, next) {
+exports.minting_mint = function(req, res, next) {
 
 switch (req.body.kind) {
   case 0:

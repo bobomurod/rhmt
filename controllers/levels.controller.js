@@ -16,10 +16,18 @@ exports.test_object = function(req, res) {
 
 exports.getLevel = function(req, res) {
     Holder.findOne({wallet: req.body.wallet}, function(err, result){
-        if (err) res.send(err);
+        if (err) {
+            res.send(err);
+            return next(err);
+            } else if (result != null){
+                res.send({
+                    "wallet": req.body.wallet,
+                    "level_count": result.level
+                })
+            }
         res.send({
-            "wallet": req.body.wallet,
-            "level_count": result.level
+            "error" : "404",
+            "message": "MSISDN not found",
         })
     })
     
@@ -27,11 +35,21 @@ exports.getLevel = function(req, res) {
 
 exports.getGetLevel = function(req, res) {
     Holder.findOne({wallet: req.params.wallet}, function(err, result){
-        if (err) res.send(err);
-        res.send({
-            "wallet": req.body.wallet,
-            "level_count": result.level
-        })
+        if (err) {
+            res.send(err);
+            return next(err);
+            } else if (result != null){
+                res.send({
+                    "wallet": req.body.wallet,
+                    "level_count": result.level
+                }) 
+            } else {
+            res.send({
+                "error" : "404",
+                "message": "MSISDN not found",
+            })
+        }
+        
     })
     
 }

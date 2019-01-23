@@ -26,7 +26,7 @@ exports.getLevel = function(req, res) {
 }
 
 exports.getGetLevel = function(req, res) {
-    Holder.findOne({wallet: req.param.wallet}, function(err, result){
+    Holder.findOne({wallet: req.params.wallet}, function(err, result){
         if (err) res.send(err);
         res.send({
             "wallet": req.body.wallet,

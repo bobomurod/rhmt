@@ -42,8 +42,9 @@ exports.holder_create = function (req, res, next) {
                 ) {
                     res.send({
                         "error": "4xx",
-                        "message": "Expecting some of required must-have fields"
-                    })
+                        "message": "Expecting some of required really must-have fields"
+                    });
+                    return next(err);
                 }
             if (err) {
                 res.send("wallet creating error, maybe wallet exists or you sending wrong type of data.")

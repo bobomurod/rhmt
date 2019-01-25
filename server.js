@@ -35,7 +35,7 @@ app.use(function(req, res, next) {
 routes(app);
 
 var server = app.listen(9994, function() {
-  console.log("Server runnin on ", server.address().port);
+  console.log( "\x1b[44m%s\x1b[0m" , "Server runnin on ", server.address().port);
 });
 
 ///////////////////////////    MONGO DB CONNECTING    /////////////////

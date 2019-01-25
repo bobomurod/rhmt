@@ -103,13 +103,13 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
                 })
               }
               if (err) {
-                console.error( "\x1b[41m%s\x1b[0m" ,"Saving MINT model error");
+                console.error( "\x1b[41m%s\x1b[0m" ,"Saving MINT model error  -> ", req.ip);
                 return next(err);
                 } else {
-                console.log( "\x1b[44m%s\x1b[0m" , "mint saved succesful")
+                console.log( "\x1b[44m%s\x1b[0m" , "mint saved succesful  -> " , req.ip )
                  }
             })
-              console.error("\x1b[41m%s\x1b[0m" ," Expecting fields ");
+              console.error("\x1b[41m%s\x1b[0m" ," Expecting fields  -> ", req.ip);
               //res.send('true');
 
           });
@@ -130,8 +130,8 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
 
 exports.minting_test_find = function (req, res) {
   Holder.find({wallet: req.body.wallet}, (err, result) => {
-    if (err) { console.log(  "\x1b[41m%s\x1b[0m" , "error")} else {
-      console.log(result.balance)
+    if (err) { console.log(  "\x1b[41m%s\x1b[0m" , "error  -> ", req.ip)} else {
+      console.log(result.balance, " requested by  -> ", req.ip)
       
     }
   })

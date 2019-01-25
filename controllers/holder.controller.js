@@ -34,7 +34,7 @@ exports.holder_create = function (req, res, next) {
         )
     Holder.find({wallet: req.body.wallet}, function(err, docs){
         if(docs.length){
-            console.log("\x1b[41m%s\x1b[0m" , "Wallet exists");
+            console.log("\x1b[41m%s\x1b[0m" , "Wallet exists  -> ", req.ip);
             res.send({
                 "code": "4xx",
                 "message": "Wallet already exists"
@@ -49,7 +49,7 @@ exports.holder_create = function (req, res, next) {
                         req.body.balance == null 
                     )
                     {
-                        console.error( "\x1b[41m%s\x1b[0m" , "Expecting fields" );
+                        console.error( "\x1b[41m%s\x1b[0m" , "Expecting fields  ->  " , req.ip );
                         res.send({
                             "code": "4xx",
                             "message": "Expecting some really important stuff. Your request must cointain WALLET, BALANCE, KYCID and MBSID fields. Please, check this out!"
@@ -57,15 +57,15 @@ exports.holder_create = function (req, res, next) {
                         return next(err);
                     }
                 if (err) {
-                    console.error( "\x1b[41m%s\x1b[0m" , "Wallet exist or wrong data type." )
+                    console.error( "\x1b[41m%s\x1b[0m" , "Wallet exist or wrong data type.  -> ", req.ip )
                     res.send({
                         "code": "40x",
                         "message": "wallet creating error, maybe wallet exists or you sending wrong type of data."
                     })
                     return next(err);
                 } else { 
-                console.log( "\x1b[44m%s\x1b[0m" , "Holder Created success" );
-                console.log(req.ip)
+                console.log( "\x1b[44m%s\x1b[0m" , "Holder Created succesfully by  -> " , req.ip );
+                //console.log(req.ip)
                 res.send({
                     "code": "200",
                     "message": "Holder Created successfully"

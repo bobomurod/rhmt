@@ -65,6 +65,7 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
     return next(err)
   } else if( holder != null) {
         var balance_before = holder.balance;
+        var kycid = holder.kycid;
         Holder.findOneAndUpdate({wallet: req.body.wallet}, {$inc: {balance: additional }},
           function (err, holder) {
             if (err) return next(err);
@@ -76,7 +77,8 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
                 wallet: req.body.wallet,
                 value: req.body.value,
                 kind: req.body.kind,
-                kycid: req.body.kycid,
+                kycid: kycid,
+                mbsid: req.body.mbsid,
                 op_date: new Date(),
                 op_timestamp: Date.now(),
                 op_id: uuidv4(),

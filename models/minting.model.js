@@ -14,6 +14,7 @@ let MintingSchema = new Schema({
   value: {type: Number, required: true},
   kind: {type: Number, required: true},
   kycid: {type: String, required: false},
+  mbsid: {type: Number, required: true},
   op_date: {type: Date, required: true},
   op_timestamp: {type: Number, required: true},
   op_id: {type: String, unique: true, required: true},

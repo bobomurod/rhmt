@@ -19,8 +19,6 @@ exports.pushertest = function (req, res) {
 // Переименовать wallet на walletID
 exports.holder_create = function (req, res, next) {
 
-//console.log(Holder.find({wallet: req.body.wallet}).count() )
-
     let holder = new Holder(
             {
                 wallet: req.body.wallet,
@@ -28,12 +26,25 @@ exports.holder_create = function (req, res, next) {
                 reg_date: new Date(),
                 reg_timestamp: Date.now(),
                 kycid: req.body.kycid,
+                mbsid: req.body.mbsid,
                 level: 0,
                 used: 0 
             }
         )
     
         holder.save(function (err, docs) {
+
+            if (       
+                    req.body.mbsid == null || 
+                    req.body.kycid == null || 
+                    req.body.wallet == null || 
+                    req.body.balance == null 
+                ) {
+                    res.send({
+                        "error": "4xx",
+                        "message": "Expecting some of required must-have fields"
+                    })
+                }
             if (err) {
                 res.send("wallet creating error, maybe wallet exists or you sending wrong type of data.")
                 return next(err);
@@ -42,7 +53,6 @@ exports.holder_create = function (req, res, next) {
             }
          
         })
-
     }
 
 // Детализация 

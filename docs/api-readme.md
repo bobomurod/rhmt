@@ -7,7 +7,8 @@ Readme к API Rahmat v0.2
         json {
             "wallet": MSISDN,      //принимается String
             "balance": integer ("0" if nothing)       
-            "kycid": string
+            "kycid": string,
+            "mbsid": Number,            //айди мобильного банковского счета 
         }
 
 
@@ -44,7 +45,7 @@ Readme к API Rahmat v0.2
             wallet: MSISDN
             value: "сумма транзакции"          //Принимается в тийнах
             kind: integer   //0-простая транзакция , 2-ЖКХ, 4-чаевые ,  5- пожертвования 
-            kycid: "string"     //обязательно
+            mbsid: "number"     //обязательно
         }
 
 

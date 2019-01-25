@@ -39,10 +39,11 @@ exports.holder_create = function (req, res, next) {
                     req.body.kycid == null || 
                     req.body.wallet == null || 
                     req.body.balance == null 
-                ) {
+                )
+                {
                     res.send({
                         "error": "4xx",
-                        "message": "Expecting some of required really must-have fields"
+                        "message": "Expecting some really important stuff. Your request must cointain WALLET, BALANCE, KYCID and MBSID fields. Please, check this out!"
                     });
                     return next(err);
                 }

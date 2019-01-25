@@ -89,6 +89,19 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
             )
             
             mint.save(function(err, docs) {
+              if (
+                    req.body.mbsid == null || 
+                    req.body.kycid == null || 
+                    req.body.kind == null || 
+                    req.body.value == null ||
+                    req.body.wallet == null
+              )
+              {
+                res.send({
+                  "error": "4xx",
+                  "message": "Expecting some really importtant stuff. Your request must contain WALLET, VALUE, KIND, MBSID and KYCID fields. Check this out!"
+                })
+              }
               if (err) {
                 console.error("Saving MINT model error");
                 return next(err);

@@ -19,6 +19,7 @@ exports.pushertest = function (req, res) {
 // Переименовать wallet на walletID
 exports.holder_create = function (req, res, next) {
 
+
     let holder = new Holder(
             {
                 wallet: req.body.wallet,
@@ -31,30 +32,43 @@ exports.holder_create = function (req, res, next) {
                 used: 0 
             }
         )
-    
-        holder.save(function (err, docs) {
+    Holder.find({wallet: req.body.wallet}, function(err, docs){
+        if(docs.length){
+            console.log("\x1b[41m%s\x1b[0m" , "Wallet exists");
+            res.send({
+                "error": "4xx",
+                "message": "Wallet already exists"
+            })
+        } else {
+            holder.save(function (err, docs) {
 
-            if (       
-                    req.body.mbsid == null || 
-                    req.body.kycid == null || 
-                    req.body.wallet == null || 
-                    req.body.balance == null 
-                )
-                {
-                    res.send({
-                        "error": "4xx",
-                        "message": "Expecting some really important stuff. Your request must cointain WALLET, BALANCE, KYCID and MBSID fields. Please, check this out!"
-                    });
+                if (       
+                        req.body.mbsid == null || 
+                        req.body.kycid == null || 
+                        req.body.wallet == null || 
+                        req.body.balance == null 
+                    )
+                    {
+                        console.error( "\x1b[41m%s\x1b[0m" , "Expecting fields" );
+                        res.send({
+                            "error": "4xx",
+                            "message": "Expecting some really important stuff. Your request must cointain WALLET, BALANCE, KYCID and MBSID fields. Please, check this out!"
+                        });
+                        return next(err);
+                    }
+                if (err) {
+                    console.error( "\x1b[41m%s\x1b[0m" , "Wallet exist or wrong data type." )
+                    res.send("wallet creating error, maybe wallet exists or you sending wrong type of data.")
                     return next(err);
+                } else { 
+                console.log( "\x1b[44m%s\x1b[0m" , "Holder Created success" )
+                res.send('Holder Created successfully')
                 }
-            if (err) {
-                res.send("wallet creating error, maybe wallet exists or you sending wrong type of data.")
-                return next(err);
-            } else { 
-            res.send('Holder Created successfully')
-            }
-         
-        })
+             
+            })
+        }
+    })
+       
     }
 
 // Детализация 

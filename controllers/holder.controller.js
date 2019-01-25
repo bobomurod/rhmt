@@ -64,7 +64,8 @@ exports.holder_create = function (req, res, next) {
                     })
                     return next(err);
                 } else { 
-                console.log( "\x1b[44m%s\x1b[0m" , "Holder Created success" )
+                console.log( "\x1b[44m%s\x1b[0m" , "Holder Created success" );
+                console.log(req.ip)
                 res.send({
                     "code": "200",
                     "message": "Holder Created successfully"

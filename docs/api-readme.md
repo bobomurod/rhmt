@@ -75,3 +75,10 @@ Readme к API Rahmat v0.2
         }
 
 10.  
+
+
+
+
+Вопросы для Ботир ака:
+        mbsID is unique ?
+        

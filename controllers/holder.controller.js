@@ -36,7 +36,7 @@ exports.holder_create = function (req, res, next) {
         if(docs.length){
             console.log("\x1b[41m%s\x1b[0m" , "Wallet exists");
             res.send({
-                "error": "4xx",
+                "code": "4xx",
                 "message": "Wallet already exists"
             })
         } else {
@@ -51,18 +51,24 @@ exports.holder_create = function (req, res, next) {
                     {
                         console.error( "\x1b[41m%s\x1b[0m" , "Expecting fields" );
                         res.send({
-                            "error": "4xx",
+                            "code": "4xx",
                             "message": "Expecting some really important stuff. Your request must cointain WALLET, BALANCE, KYCID and MBSID fields. Please, check this out!"
                         });
                         return next(err);
                     }
                 if (err) {
                     console.error( "\x1b[41m%s\x1b[0m" , "Wallet exist or wrong data type." )
-                    res.send("wallet creating error, maybe wallet exists or you sending wrong type of data.")
+                    res.send({
+                        "code": "40x",
+                        "message": "wallet creating error, maybe wallet exists or you sending wrong type of data."
+                    })
                     return next(err);
                 } else { 
                 console.log( "\x1b[44m%s\x1b[0m" , "Holder Created success" )
-                res.send('Holder Created successfully')
+                res.send({
+                    "code": "200",
+                    "message": "Holder Created successfully"
+                })
                 }
              
             })
@@ -104,10 +110,13 @@ exports.holder_all = function (req, res) {
 exports.holder_balance = function (req, res, next) {
     Holder.findOne({wallet: req.params.wallet},  function (err, holder) {
         if (err) {
-            res.send("some error")
+            res.send("Shitty error happend, but it`s Ok!")
             next(err)} else {
                 if (holder == null) {
-                    res.send("maybe holder does not exist")
+                    res.send({
+                        "code": "404",
+                        "message": "Maybe holder does not exists"
+                    })
                 } else {
                     res.send("{"+holder.balance+"}")
                 }

@@ -10,7 +10,7 @@ router.get('/pushertest', holder_controller.pushertest);
 router.post('/create', holder_controller.holder_create);
 router.get('/:wallet', holder_controller.holder_details);
 router.get('/', holder_controller.holder_all);
-router.put('/:wallet/update', holder_controller.holder_update);
+//router.put('/:wallet/update', holder_controller.holder_update);
 router.delete('/:id/delete', holder_controller.holder_delete);
 router.get('/:wallet/balance', holder_controller.holder_balance);
 

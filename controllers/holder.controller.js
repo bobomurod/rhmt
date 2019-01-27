@@ -49,7 +49,7 @@ exports.holder_create = function (req, res, next) {
                         req.body.balance == null 
                     )
                     {
-                        console.error( "\x1b[41m%s\x1b[0m" , "Expecting fields  ->  " , req.ip );
+                        console.error( "\x1b[41m%s\x1b[0m" , "Expecting fields  <-  " , req.ip );
                         res.send({
                             "code": "4xx",
                             "message": "Expecting some really important stuff. Your request must cointain WALLET, BALANCE, KYCID and MBSID fields. Please, check this out!"
@@ -57,14 +57,14 @@ exports.holder_create = function (req, res, next) {
                         return next(err);
                     }
                 if (err) {
-                    console.error( "\x1b[41m%s\x1b[0m" , "Wallet exist or wrong data type.  -> ", req.ip )
+                    console.error( "\x1b[41m%s\x1b[0m" , "Wallet exist or wrong data type.  <-  ", req.ip )
                     res.send({
                         "code": "40x",
                         "message": "wallet creating error, maybe wallet exists or you sending wrong type of data."
                     })
                     return next(err);
                 } else { 
-                console.log( "\x1b[44m%s\x1b[0m" , "Holder Created succesfully by  -> " , req.ip );
+                console.log( "\x1b[44m%s\x1b[0m" , "Holder Created succesfully by  ->  " , req.ip );
                 //console.log(req.ip)
                 res.send({
                     "code": "200",
@@ -86,13 +86,13 @@ exports.holder_details = function (req, res) {
     })
 };
 
-exports.holder_update = function (req, res) {
-    Holder.findOneAndUpdate({wallet: req.params.wallet}, {$set: {balance: req.body.balance}},
-        function (err, holder) {
-            if (err) return next(err);
-            res.send('holder updated.');
-        });
-};
+// exports.holder_update = function (req, res) {
+//     Holder.findOneAndUpdate({wallet: req.params.wallet}, {$set: {balance: req.body.balance}},
+//         function (err, holder) {
+//             if (err) return next(err);
+//             res.send('holder updated.');
+//         });
+// };
  // @TODO переделать на архивирование аккаунта
 exports.holder_delete = function (req, res) {
     Holder.findByIdAndRemove(req.params.id, function(err) {

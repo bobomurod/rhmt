@@ -33,7 +33,7 @@ exports.getLevel = function(req, res) {
     
 }
 
-exports.getGetLevel = function(req, res) {
+exports.getLevelByMsisdn = function(req, res) {
     Holder.findOne({wallet: req.params.wallet}, function(err, result){
         if (err) {
             res.send(err);
@@ -48,7 +48,28 @@ exports.getGetLevel = function(req, res) {
                 "error" : "404",
                 "message": "MSISDN not found",
             })
-        }
+        } 
+        
+    })
+    
+}
+
+exports.getLevelByMbsID = function(req, res) {
+    Holder.findOne({mbsid: req.params.mbsid}, function(err, result){
+        if (err) {
+            res.send(err);
+            return next(err);
+            } else if (result != null){
+                res.send({
+                    "wallet": req.body.wallet,
+                    "level_count": result.level
+                }) 
+            } else {
+            res.send({
+                "error" : "404",
+                "message": "mbsID not found",
+            })
+        } 
         
     })
     

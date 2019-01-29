@@ -14,21 +14,42 @@ exports.test_object = function(req, res) {
     //console.log(testobj)
 }
 
-exports.getLevel = function(req, res) {
+exports.getLevelByMSISDN = function(req, res, next) {
     Holder.findOne({wallet: req.body.wallet}, function(err, result){
         if (err) {
             res.send(err);
             return next(err);
             } else if (result != null){
                 res.send({
-                    "wallet": req.body.wallet,
+                    "wallet": result.wallet,
                     "level_count": result.level
                 })
-            }
+            } else {
         res.send({
             "error" : "404",
             "message": "MSISDN not found",
         })
+        }
+    })
+    
+}
+
+exports.getLevelByMBSID = function(req, res) {
+    Holder.findOne({mbsid: req.body.mbsid}, function(err, result){
+        if (err) {
+            res.send(err);
+            return next(err);
+            } else if (result != null){
+                res.send({
+                    "mbsid": result.mbsid,
+                    "level_count": result.level
+                })
+            } else {
+        res.send({
+            "code" : "404",
+            "message": "MBSID not found",
+        })
+        }
     })
     
 }

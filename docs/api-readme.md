@@ -57,15 +57,29 @@ Readme к API Rahmat v0.2
             value: integer
         }
 
-8. прорверка уровня пользователя
+8. прорверка уровня пользователя по MSISDN
 
-        post /levels/getLevel
+        post /levels/getLevelByMSISDN
         json {
                 wallet: MSISDN
         }
 
         еще один способ
-        get /levels/getLevel/$MSISDN      //скоро заработает
+        get /levels/getLevel/msisdn/$MSISDN      //работает
+
+
+
+8.1 прорверка уровня пользователя по mbsID
+
+        post /levels/getLevelByMBSID
+        json {
+                mbsid: mbsID
+        }
+
+        еще один способ
+        get /levels/getLevel/mbsid/$MBSID      
+
+
 
 9. конвертация рахматов в уровни
 

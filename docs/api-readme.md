@@ -88,11 +88,5 @@ Readme к API Rahmat v0.2
                 wallet: MSISDN
         }
 
-10.  
+10. API для получения информации (notification) при прохождении верификации
 
-
-
-
-Вопросы для Ботир ака:
-        mbsID is unique ?
-        

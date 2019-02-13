@@ -40,7 +40,7 @@ Readme к API Rahmat v0.2
 
 6. начесление рахматов (простое начисление поинтов, 1 процент от каждой транзакции)
 
-        post /minting/
+        post /minting/mint
         json {
             wallet: MSISDN
             value: "сумма транзакции"          //Принимается в тийнах

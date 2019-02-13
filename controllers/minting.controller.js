@@ -75,53 +75,63 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
   } else if( holder != null) {
         var balance_before = holder.balance;
         var kycid = holder.kycid;
-        Holder.findOneAndUpdate({wallet: req.body.wallet}, {$inc: {balance: additional }},
-          function (err, holder) {
-            if (err) return next(err);
-      
-            let mint = new Mint(
-              {
-              initator_id: "0",
-                minting_id: uuidv4(),
-                wallet: req.body.wallet,
-                value: req.body.value,
-                kind: req.body.kind,
-                kycid: kycid,
-                mbsid: req.body.mbsid,
-                op_date: new Date(),
-                op_timestamp: Date.now(),
-                op_id: uuidv4(),
-                minted: additional,
-                balance_before: balance_before,
-                balance_after: holder.balance + additional,
-              }
-            )
-            
-            mint.save(function(err, docs) {
-              if (
-                    req.body.mbsid == null || 
-                    req.body.kycid == null || 
-                    req.body.kind == null || 
-                    req.body.value == null ||
-                    req.body.wallet == null
-              )
-              {
-                res.send({
-                  "error": "4xx",
-                  "message": "Expecting some really importtant stuff. Your request must contain WALLET, VALUE, KIND, MBSID and KYCID fields. Check this out!"
-                })
-              }
-              if (err) {
-                console.error( "\x1b[41m%s\x1b[0m" ,"Saving MINT model error  <- ", req.ip);
-                return next(err);
-                } else {
-                console.log( "\x1b[44m%s\x1b[0m" , "Mint saved succesful  <- " , req.ip )
-                 }
-            })
-              console.error("\x1b[41m%s\x1b[0m" ," Expecting fields  <- ", req.ip);
-              //res.send('true');
 
-          });
+        if (
+          req.body.mbsid == null || 
+          req.body.kycid == null || 
+          req.body.kind == null || 
+          req.body.value == null ||
+          req.body.wallet == null
+        )
+        {
+          res.send({
+            "error": "4xx",
+            "message": "Expecting some really importtant stuff. Your request must contain WALLET, VALUE, KIND, MBSID and KYCID fields. Check this out!"
+          })
+        } else {
+          Holder.findOneAndUpdate({wallet: req.body.wallet}, {$inc: {balance: additional }},
+            function (err, holder) {
+              if (err) return next(err);
+        
+              let mint = new Mint(
+                {
+                  initator_id: "0",
+                  minting_id: uuidv4(),
+                  wallet: req.body.wallet,
+                  value: req.body.value,
+                  kind: req.body.kind,
+                  kycid: kycid,
+                  mbsid: req.body.mbsid,
+                  op_date: new Date(),
+                  op_timestamp: Date.now(),
+                  op_id: uuidv4(),
+                  minted: additional,
+                  balance_before: balance_before,
+                  balance_after: holder.balance + additional,
+                }
+              )
+              
+             
+                mint.save(function(err, docs) {
+               
+                  if (err) {
+                    console.error( "\x1b[41m%s\x1b[0m" ,"Saving MINT model error  <- ", req.ip);
+                    return next(err);
+                    } else {
+                    console.log( "\x1b[44m%s\x1b[0m" , "Mint saved succesful  <- " , req.ip );
+                    res.send("200")
+                     }
+                })
+              
+  
+              
+                console.error("\x1b[41m%s\x1b[0m" ," Expecting fields  <- ", req.ip);
+                //res.send('true');
+  
+            });
+        }  
+
+
     } else {
       res.send({
         "error" : "404",

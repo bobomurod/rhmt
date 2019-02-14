@@ -51,7 +51,7 @@ Readme к API Rahmat v0.2
 
 7. начесление рахматов  (RAW начсление)
 
-        post /minting/mint
+        post /minting/easy
         json {
             wallet: MSISDN,
             value: integer

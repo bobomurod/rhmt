@@ -9,6 +9,7 @@
   "author": "@bobomurod",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "ethereumjs-tx": "^1.3.7",

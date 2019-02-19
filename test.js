@@ -11,7 +11,7 @@ const getHolders = async url => {
   }
 };
 var g = 1;
-for(i=0; i != 1; i++){
+for(i=0; i != 10; i++){
 getHolders(url).then(()=>{console.log(g++)});
 }
 
@@ -48,3 +48,18 @@ const getLevelByMsisdn = async url => {
 };
 
 getLevelByMsisdn('http://go.btc.uz:9994/levels/getLevelByMSISDN')
+
+
+//////////////////////////////////      CREATE HOLDERS       //////////////////////////////////
+
+const createHolder = async url => {
+    try {
+        const response = await axios.post(url, {
+            wallet: ,
+            balance: ,
+            kycid: ,
+            mbsid: 
+        })
+    }
+}
+// Math.random().toString(9).substring(2,11);

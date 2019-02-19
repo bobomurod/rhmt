@@ -104,7 +104,7 @@ Holder.findOne({ wallet: req.body.wallet }, function(err, holder) {
                   mbsid: req.body.mbsid,
                   op_date: new Date(),
                   op_timestamp: Date.now(),
-                  op_id: uuidv4(),
+                  op_id: uuidv4(),  
                   minted: additional,
                   balance_before: balance_before,
                   balance_after: holder.balance + additional,

@@ -64,18 +64,3 @@ const createHolder = async url => {
 }
 //// Math.random().toString(9).substring(2,11);
 
-
-//////////////////////////////////      CREATE HOLDERS       //////////////////////////////////
-
-const createHolder = async url => {
-    try {
-        const response = await axios.post(url, {
-            wallet: ,
-            balance: ,
-            kycid: ,
-            mbsid: 
-        })
-    }
-}
-//// Math.random().toString(9).substring(2,11);
-

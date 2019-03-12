@@ -12,6 +12,7 @@ const holder = require("./routes/holder.route");
 const minting = require("./routes/minting.route");
 const tx = require("./routes/transaction.route");
 const levels = require("./routes/levels.route")
+const salting = require('./.secrets/salting_microservice/salting.js')
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use("/holders", holder);
 app.use("/minting", minting);
 app.use("/tx", tx);
 app.use("/levels", levels);
+app.use("/salting", salting);
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

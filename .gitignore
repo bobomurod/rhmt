@@ -408,3 +408,7 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+# Local secret files which is not for public eyes
+
+.secrets/

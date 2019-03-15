@@ -3,11 +3,16 @@
 // нужно добавить middleware тпа хендлеров f
 //
 
-var express = require("express");
-var bodyParser = require("body-parser");
-var cors = require("cors");
-var routes = require("./routes/routes.js");
+
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 const mongoose = require("mongoose");
+const morgan = require('morgan');
+const path = require('path');
+const fs = require('fs');
+
+var routes = require("./routes/routes.js");
 const holder = require("./routes/holder.route");
 const minting = require("./routes/minting.route");
 const tx = require("./routes/transaction.route");
@@ -16,6 +21,9 @@ const salting = require('./.secrets/salting_microservice/salting.js')
 
 var app = express();
 
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'console.log'), { flags: 'a' })
+
+app.use(morgan('combined', { stream: accessLogStream }))
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

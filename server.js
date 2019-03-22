@@ -17,7 +17,7 @@ const minting = require("./routes/minting.route");
 const tx = require("./routes/transaction.route");
 const levels = require("./routes/levels.route")
 const salting = require('./.secrets/salting_microservice/salting.js')
-const explorer = require('./routes/explore.route')
+const explorer = require('./routes/explorer.route')
 
 var app = express();
 
@@ -32,7 +32,7 @@ app.use("/minting", minting);
 app.use("/tx", tx);
 app.use("/levels", levels);
 app.use("/salting", salting);
-app.use('explore', explorer);
+app.use('/explorer', explorer);
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

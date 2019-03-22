@@ -4,7 +4,7 @@ var sending = require('../models/sending.js');
 var balanceOf = require('../models/balanceOf.js');
 var register = require('../models/register.js');
 var salting = require('../.secrets/salting_microservice/salting.js')
-var explorer = require('../models/explorer.js')
+var explorer = require('../models/explorer.model')
 //var levels = require('../models/levels.model.js')
 
 var testModel = require('../models/testings/testModel');

@@ -4,6 +4,7 @@ var sending = require('../models/sending.js');
 var balanceOf = require('../models/balanceOf.js');
 var register = require('../models/register.js');
 var salting = require('../.secrets/salting_microservice/salting.js')
+var explorer = require('../models/explorer.js')
 //var levels = require('../models/levels.model.js')
 
 var testModel = require('../models/testings/testModel');
@@ -44,6 +45,12 @@ var appRouter = function(app) {
     app.post('/salting', function (req, res, next) {
         console.log("Responding...");
         res.status(200).json(salting(req.body.code));
+        console.log("Done.");
+    })
+
+    app.post('/explorer', function (req, res, next) {
+        console.log("Explorer responding....");
+        res.status(200).json(explorer(req.body.code));
         console.log("Done.");
     })
 

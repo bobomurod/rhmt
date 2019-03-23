@@ -7,6 +7,7 @@ const explorer_controller = require('../controllers/explorer.controller');
 //testng route
 
 
-router.get('/test', explorer_controller.explorer_test)
+router.get('/test', explorer_controller.explorer_test);
+router.post('/allmintings', explorer_controller.explorer_all_mintings);
 
 module.exports = router;

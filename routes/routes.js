@@ -4,7 +4,8 @@ var sending = require('../models/sending.js');
 var balanceOf = require('../models/balanceOf.js');
 var register = require('../models/register.js');
 var salting = require('../.secrets/salting_microservice/salting.js')
-var explorer = require('../models/explorer.model')
+var explorer = require('../models/explorer.model');
+var auth = require('../models/auth.model')
 //var levels = require('../models/levels.model.js')
 
 var testModel = require('../models/testings/testModel');
@@ -25,7 +26,7 @@ var appRouter = function(app) {
     })
     
     app.post('/minting', function (req, res, next) {
-        console.log("Responding...");
+        console.log("Minting responding...");
         res.status(200).json(minting(req.body.address, req.body.quantity));
         console.log("Done.");
     });
@@ -37,13 +38,13 @@ var appRouter = function(app) {
     })
 
     app.post('/balanceOf', function (req, res, next) {
-        console.log("Responding...");
+        console.log("BalanceOf responding....");
         res.status(200).json(balanceOf(req.body.address));
         console.log("Done.");
     })
 
     app.post('/salting', function (req, res, next) {
-        console.log("Responding...");
+        console.log("Salting...");
         res.status(200).json(salting(req.body.code));
         console.log("Done.");
     })

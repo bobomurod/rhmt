@@ -49,6 +49,12 @@ var appRouter = function(app) {
         console.log("Done.");
     })
 
+    app.post('/auth', function (req, res, next) {
+        console.log("Auth proccessing...");
+        res.status(200).json(salting(req.body.code));
+        console.log("Done.");
+    })
+
     app.post('/explorer', function (req, res, next) {
         console.log("Explorer responding....");
         res.status(200).json(explorer(req.body.code));

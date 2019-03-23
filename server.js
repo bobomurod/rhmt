@@ -18,6 +18,7 @@ const tx = require("./routes/transaction.route");
 const levels = require("./routes/levels.route")
 const salting = require('./.secrets/salting_microservice/salting.js')
 const explorer = require('./routes/explorer.route')
+const auth = require('./routes/auth.route');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use("/tx", tx);
 app.use("/levels", levels);
 app.use("/salting", salting);
 app.use('/explorer', explorer);
+app.use('/auth', auth);
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

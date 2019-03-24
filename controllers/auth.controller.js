@@ -1,4 +1,4 @@
-const JWT = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const Users = require('../models/auth.model')
 
 exports.test = (req, res, next) => {

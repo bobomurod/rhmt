@@ -7,6 +7,7 @@ exports.test = (req, res, next) => {
     })
 }
 
+//регистрация
 exports.signup = (req, res, next) => {
     Users.findOne({ username: req.body.username }, (err, result) => {
         if (err) {
@@ -36,6 +37,7 @@ exports.signup = (req, res, next) => {
     })
 }
 
+//логин
 exports.login = (req, res, next) => {
     Users.findOne({ username: req.body.username }, (err, result) => {
         if (err) {

@@ -18,5 +18,7 @@ exports.explorer_all_mintings = (req, res, next) => {
 }
 
 exports.explorer_query = (req, res, next) => {
-    
+    Mint.find({+req.body.query+}, (err, result) => {
+        
+    } )
 }

@@ -1,7 +1,7 @@
 * [] Logging properly
     * [] Task
-* [] Move to another server
-    * [] Task
+* [x] Move to another server
+    * [x] Domain setting
 * [] Put into container
     * [] Task
 * [] Attach blockchain module
@@ -11,6 +11,9 @@
 * [] Admin panel for tracking data
     * [] Task
 
+Сделать API слушающий ивент о прохождении верификации
+
+Сделать API для получения информации о состоянии держателя
 
 Продумать блокировку аккаунта в случаи не возврата средств
 

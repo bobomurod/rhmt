@@ -17,6 +17,7 @@ let HolderShema = new Schema({
     last_mint_timestamp: {type: Number},
     reg_date: {type: String},
     reg_timestamp: {type: Number},
+    isVerified: {type: Boolean},
     status: {type: String},
     banned: {type: Boolean}
 })

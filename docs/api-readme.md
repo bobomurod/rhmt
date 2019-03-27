@@ -91,3 +91,12 @@ Readme к API Rahmat v0.2
 
 10. API для получения информации (notification) при прохождении верификации
 
+11. Получение истории начесления баллов по MSISDN
+
+        post /explorer/all_mintings
+        json {
+                wallet: MSISDN
+        }
+
+12. Получение информации о состоянии держателя
+

@@ -18,11 +18,12 @@ exports.explorer_all_mintings = (req, res, next) => {
 }
 
 exports.explorer_query = (req, res, next) => {
-    Mint.find({+req.body.query+}, (err, result) => {
-       if (condition) {
-           
+    Mint.find(req.body.query, (err, result) => {
+       if (err) {
+        res.status(455);
+        next(err);
        } else {
-           
+           res.json(result)
        } 
     } )
 }

@@ -9,5 +9,6 @@ const explorer_controller = require('../controllers/explorer.controller');
 
 router.get('/test', explorer_controller.explorer_test);
 router.post('/allmintings', explorer_controller.explorer_all_mintings);
+router.post('/query', explorer_controller.explorer_query);
 
 module.exports = router;
